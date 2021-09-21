@@ -5,7 +5,7 @@ function renderLicenseBadge(license) {
     return "";
   }
   return `
-   [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/${license}.en.html)
+   [![License: GPL v2](https://img.shields.io/badge/License-${license}-blue.svg)](https://www.gnu.org/licenses/old-licenses/${license}.en.html)
   `;
 }
 
@@ -17,7 +17,7 @@ function renderLicenseLink(license) {
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {
+function renderLicenseSection(license, email) {
   if (license === "") {
     return "";
   }
@@ -34,15 +34,27 @@ function renderLicenseSection(license) {
 
   return `
 ## License\n
-Code released under the ${licenseName} [License]${renderLicenseLink(license)}`;
+Code released under the ${licenseName} [License]${renderLicenseLink(license)}. 
+for additional questions please feel free to contact us via email at ${email}`;
 }
 
 //Render section
 function renderSection(sectionTitle, data) {
+  if (!data) return "";
   return `
 ## ${sectionTitle}\n
 ${data}
   `;
+}
+
+function renderSectionQuestions(data, githubUsername) {
+  if (!data) return "";
+
+  return `
+## Questions\n
+${data}\n
+checkout the [GitHub profile](https://github.com/${githubUsername})
+`;
 }
 
 //renden the table of Content
@@ -66,16 +78,12 @@ ${renderLicenseBadge(data.license[0])}\n
 ## Description\n
 ${data.description}\n
 ${renderTableOfContent(data)}
-${
-  data.installation ? `${renderSection("Installation", data.installation)}` : ""
-}\n
-${data.usage ? `${renderSection("Usage", data.usage)}` : ""}\n
-${
-  data.contributing ? `${renderSection("Contributing", data.contributing)}` : ""
-}\n
-${data.tests ? `${renderSection("Tests", data.tests)}` : ""}\n
-${data.questions ? `${renderSection("Questions", data.questions)}` : ""}\n
-${renderLicenseSection(data.license[0])}
+${renderSection("Installation", data.installation)}\n
+${renderSection("Usage", data.usage)}\n
+${renderSection("Contributing", data.contributing)}\n
+${renderSection("Tests", data.tests)}\n
+${renderSectionQuestions(data.questions, data.username)}\n
+${renderLicenseSection(data.license[0], data.email)}
 `;
 }
 
