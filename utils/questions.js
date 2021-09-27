@@ -43,7 +43,7 @@ const questions = [
     message: "Project Questions Information?",
   },
   {
-    type: "checkbox",
+    type: "list",
     name: "license",
     message: "Select the license for your project?",
     choices: [

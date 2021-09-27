@@ -50,7 +50,7 @@ function renderLicenseLink(license) {
   return `(https://choosealicense.com/licenses/${license}/)`;
 }
 
-// TODO: Create a function that returns the license section of README
+//Create a function that returns the license section of README
 // If there is no license, return an empty string
 
 function getLicenseName(license) {
@@ -114,18 +114,30 @@ function renderTableOfContent(data) {
 //Create a function to generate markdown for README
 function generateMarkdown(data) {
   console.log(data);
+  const {
+    username,
+    email,
+    title,
+    description,
+    installation,
+    usage,
+    contributing,
+    questions,
+    license,
+    tests,
+  } = data;
   return `
-# ${data.title}
-${renderLicenseBadge(data.license[0])}\n
+# ${title}
+${renderLicenseBadge(license)}\n
 ## Description\n
-${data.description}\n
+${description}\n
 ${renderTableOfContent(data)}
-${renderSection("Installation", data.installation)}\n
-${renderSection("Usage", data.usage)}\n
-${renderSection("Contributing", data.contributing)}\n
-${renderSection("Tests", data.tests)}\n
-${renderSectionQuestions(data.questions, data.username)}\n
-${renderLicenseSection(data.license[0], data.email)}
+${renderSection("Installation", installation)}\n
+${renderSection("Usage", usage)}\n
+${renderSection("Contributing", contributing)}\n
+${renderSection("Tests", tests)}\n
+${renderSectionQuestions(questions, username)}\n
+${renderLicenseSection(license, email)}
 `;
 }
 
