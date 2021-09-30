@@ -72,7 +72,6 @@ function renderTableOfContent(data) {
 
 //Create a function to generate markdown for README
 function generateMarkdown(data) {
-  console.log(data);
   const {
     username,
     email,
@@ -83,7 +82,7 @@ function generateMarkdown(data) {
     contributing,
     questions,
     license,
-    tests,
+    test,
   } = data;
   return `
 # ${title}
@@ -94,7 +93,7 @@ ${renderTableOfContent(data)}
 ${renderSection("Installation", installation)}\n
 ${renderSection("Usage", usage)}\n
 ${renderSection("Contributing", contributing)}\n
-${renderSection("Tests", tests)}\n
+${renderSection("Tests", test)}\n
 ${renderSectionQuestions(questions, username)}\n
 ${renderLicenseSection(license, email)}
 `;
