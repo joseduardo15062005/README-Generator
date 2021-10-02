@@ -8,7 +8,7 @@ This project generete a readme.md file for your github repository. This project 
 
 <p align="center"><img src="./assets/images/Screen.gif" width="70%"></p>
 
-[Click here to watch the Walkthrough Video](assets/videos/readme-file-generator.mp4)
+[Click here to watch the Walkthrough Video](https://drive.google.com/file/d/1_w2uHaq-Krl7MUCoLgocnH9jQY_Jv7Zy/view?usp=sharing)
 
 ## Table of Contents
 
